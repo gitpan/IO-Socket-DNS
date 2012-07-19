@@ -42,13 +42,15 @@ world.
 Default is port 53 but requires super user to bind.
 You can specify a high port >= 1024 if you do not wish
 to run dnsd as root, but then you'll need to setup some
-kind of forwarder the same as is required for the
+kind of forwarder to that same port as is required for the
 --listen_ip option since normal DNS traffic always uses
 port 53.
 
 =head2 --password <password>
 
-Use this to reduce chances of undesired moochers. No default.
+Use this to reduce chances of undesired proxy moochers.
+This can be any string up to 8 characters.
+Default is no password.
 
 =head2 --verbose
 
@@ -151,6 +153,7 @@ Step 6. Test it from the outside
  (If all is good, it should show you some unzipper perl code.)
 
  $ export DNS_SUFFIX=d.example.com
+ $ export DNS_PASSWORD=SeCrEt
  $ bin/dnsssh 127.0.0.1
  (If all is good, it will SSH into your server in Step #2.)
 
@@ -164,7 +167,7 @@ Rob Brown, E<lt>bbb@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2011 by Rob Brown
+Copyright (C) 2011-2012 by Rob Brown
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.9 or,
